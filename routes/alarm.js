@@ -7,10 +7,10 @@ var AlarmController = require("../controllers/alarm");
 var api = express.Router();
 
 api.post('/alarm/create', AlarmController.createAlarm);
-api.get('/alarm/:id', AlarmController.getAlarm);
-api.delete("/alarm/:id", AlarmController.deleteAlarm);
-api.put("/alarm/:id", AlarmController.updateAlarm);
 api.get("/alarm/list", AlarmController.getAllAlarms);
+api.get('/alarm/:alarmId', AlarmController.getAlarm);
+api.delete("/alarm/:alarmId", AlarmController.deleteAlarm);
+api.put("/alarm/:alarmId", AlarmController.updateAlarm);
 
 
 module.exports = api;

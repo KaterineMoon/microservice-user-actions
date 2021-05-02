@@ -17,18 +17,18 @@ function createUser(req, res) {
     user.favorites = [];
     user.default = [];
 
-    user.save((error, UserCreated) => {
+    user.save((error, userCreated) => {
 
         if (error){
         res.status(500).send(
             { message: "Server error" });
         }
         else{
-            if (!UserCreated){
-                res.status(400).send({ message: "The User can not be created" });
+            if (!userCreated){
+                res.status(400).send({ message: "The user can not be created" });
             } 
             else{
-                res.status(200).send({ User: UserCreated })
+                res.status(200).send({ user: userCreated })
             }
         }
     });
@@ -36,20 +36,20 @@ function createUser(req, res) {
 
 function getUser(req, res) {
     
-    var UserId =  req.params.UserId;
+    var userId =  req.params.userId;
 
-    User.findOne({ _id: UserId }, (err, User) => {
+    User.findOne({ _id: userId }, (err, user) => {
 
         if (err){
             console.log(err)
             res.status(500).send({ message: "Server error" });
         } 
         else{
-            if (!User){
+            if (!user){
                 res.status(404).send({ message: "User not found" });
             } 
             else{
-                res.status(200).send({ User: User })
+                res.status(200).send({ user: user })
             }
         
         }
@@ -58,12 +58,12 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
 
-    var UserId = req.params.UserId;
+    var userId = req.params.userId;
     var newInformation = req.body;
 
     User.findByIdAndUpdate(
 
-        UserId,
+        userId,
         newInformation,
         (error, updatedUser) => {
             if (error){
@@ -71,10 +71,10 @@ function updateUser(req, res) {
             } 
             else{
                 if (!updatedUser){
-                    res.status(400).send({ message: "The User can not be updated" });
+                    res.status(400).send({ message: "The user can not be updated" });
                 } 
                 else{
-                    res.status(200).send({ User: updatedUser });
+                    res.status(200).send({ user: updatedUser });
                 }
             }
         }
@@ -83,9 +83,9 @@ function updateUser(req, res) {
 
 function deleteUser(req, res) {
 
-    var UserId = req.params.UserId;
+    var userId = req.params.UserId;
 
-    User.findByIdAndRemove(UserId, (error, deletedUser) => {
+    User.findByIdAndRemove(userId, (error, deletedUser) => {
 
         if (error){
             res.status(500).send({ message: "Server error" });
@@ -95,7 +95,7 @@ function deleteUser(req, res) {
                 res.status(400).send({ message: "The User can not be deleted" });
             } 
             else{
-                res.status(200).send({ User: deletedUser });
+                res.status(200).send({ user: deletedUser });
             }
         }
     });

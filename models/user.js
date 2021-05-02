@@ -2,8 +2,10 @@
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+var ObjectId = Schema.ObjectId;
 
 var UserSchema = Schema({
+  userId: ObjectId,
   idUser: Number,
   profile: String,
   alarm: [ String ],

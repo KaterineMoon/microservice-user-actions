@@ -106,7 +106,7 @@ function getAllAlarms(req, res) {
             res.status(500).send("Server error");
         } 
         else{
-            if (!users) {
+            if (!alarms) {
                 res.status(404).send({ message: "Users not found" });
             } 
             else
