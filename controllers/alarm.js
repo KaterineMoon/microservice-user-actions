@@ -12,7 +12,7 @@ function createAlarm(req, res) {
   var alarm = new Alarm();
   var params = req.body;
 
-  alarm.idRoute = params.routeId;
+  alarm.idRoute = params.idRoute;
   alarm.location = params.location;
 
   alarm.save((error, alarmCreated) => {
