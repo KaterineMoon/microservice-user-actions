@@ -28,7 +28,7 @@ function createUser(req, res) {
                 res.status(400).send({ message: "The user can not be created" });
             } 
             else{
-                res.status(200).send({ user: userCreated })
+                res.status(200).send( userCreated )
             }
         }
     });
@@ -49,7 +49,7 @@ function getUser(req, res) {
                 res.status(404).send({ message: "User not found" });
             } 
             else{
-                res.status(200).send({ user: user })
+                res.status(200).send( user )
             }
         
         }
@@ -74,7 +74,7 @@ function updateUser(req, res) {
                     res.status(400).send({ message: "The user can not be updated" });
                 } 
                 else{
-                    res.status(200).send({ user: updatedUser });
+                    res.status(200).send( updatedUser );
                 }
             }
         }
@@ -95,7 +95,7 @@ function deleteUser(req, res) {
                 res.status(400).send({ message: "The User can not be deleted" });
             } 
             else{
-                res.status(200).send({ user: deletedUser });
+                res.status(200).send( deletedUser );
             }
         }
     });
@@ -114,7 +114,7 @@ function getAllUsers(req, res) {
             } 
             else
             {
-                res.status(200).send({ users });
+                res.status(200).send( users );
             }
         }
     });

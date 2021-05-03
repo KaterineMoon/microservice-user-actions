@@ -25,7 +25,7 @@ function createProfile(req, res) {
                 res.status(400).send({ message: "The profile can not be created" });
             } 
             else{
-                res.status(200).send({ profile: profileCreated })
+                res.status(200).send( profileCreated )
             }
         }
     });
@@ -46,7 +46,7 @@ function getProfile(req, res) {
                 res.status(404).send({ message: "Profile not found" });
             } 
             else{
-                res.status(200).send({ profile: profile })
+                res.status(200).send( profile )
             }
         
         }
@@ -71,7 +71,7 @@ function updateProfile(req, res) {
                     res.status(400).send({ message: "The profile can not be updated" });
                 } 
                 else{
-                    res.status(200).send({ profile: updatedProfile });
+                    res.status(200).send( updatedProfile );
                 }
             }
         }
@@ -92,7 +92,7 @@ function deleteProfile(req, res) {
                 res.status(400).send({ message: "The profile can not be deleted" });
             } 
             else{
-                res.status(200).send({ profile: deletedProfile });
+                res.status(200).send( deletedProfile );
             }
         }
     });
@@ -124,7 +124,7 @@ function uploadImage(req, res) {
                     if (!profileUpdated) {
                         res.status(400).send({ message: "The profile can not be updated" });
                     } else {
-                        res.status(200).send({ profile: profileUpdated });
+                        res.status(200).send( profileUpdated );
                     }
                 }
             });
@@ -173,7 +173,7 @@ function getAllProfiles(req, res) {
             } 
             else{
 
-                res.status(200).send({ profiles });
+                res.status(200).send( profiles );
             }
         }
     });

@@ -1,5 +1,6 @@
 "use strict";
 
+const { log } = require('console');
 //trabajar con ficheros
 var fs = require('fs');
 var path = require('path');
@@ -25,7 +26,7 @@ function createAlarm(req, res) {
             res.status(400).send({ message: "The alarm can not be created" });
         } 
         else{
-            res.status(200).send({ alarm: alarmCreated })
+            res.status(200).send( alarmCreated )
         }
     }
   });
@@ -34,6 +35,9 @@ function createAlarm(req, res) {
 function getAlarm(req, res) {
     
     var alarmId =  req.params.alarmId;
+
+    console.log(alarmId);
+    console.log(typeof(alarmId));
 
     Alarm.findOne({ _id: alarmId }, (err, alarm) => {
 
@@ -46,7 +50,8 @@ function getAlarm(req, res) {
                 res.status(404).send({ message: "Alarm not found" });
             } 
             else{
-                res.status(200).send({ alarm: alarm })
+                res.status(200).send( alarm )
+                console.log(alarm);
             }
         
         }
@@ -71,7 +76,7 @@ function updateAlarm(req, res) {
                     res.status(400).send({ message: "The alarm can not be updated" });
                 } 
                 else{
-                    res.status(200).send({ alarm: updatedAlarm });
+                    res.status(200).send( updatedAlarm );
                 }
             }
         }
@@ -92,7 +97,7 @@ function deleteAlarm(req, res) {
                 res.status(400).send({ message: "The alarm can not be deleted" });
             } 
             else{
-                res.status(200).send({ alarm: deletedAlarm });
+                res.status(200).send( deletedAlarm );
             }
         }
     });
@@ -111,8 +116,31 @@ function getAllAlarms(req, res) {
             } 
             else
             {
-                res.status(200).send({ alarms });
+                res.status(200).send( alarms );
             }
+        }
+    });
+}
+
+function testing(req, res) {
+    
+    var alarmId = "608eed73b27c6531a8cefabe"
+
+    Alarm.findOne({ _id: alarmId }, (err, alarm) => {
+
+        if (err){
+            console.log(err)
+            res.status(500).send({ message: "Server error" });
+        } 
+        else{
+            if (!alarm){
+                res.status(404).send({ message: "Alarm not found" });
+            } 
+            else{
+                res.status(200).send( alarm )
+                console.log(alarm);
+            }
+        
         }
     });
 }
@@ -122,5 +150,6 @@ module.exports = {
     getAlarm,
     updateAlarm,
     deleteAlarm,
-    getAllAlarms
+    getAllAlarms,
+    testing
 };
