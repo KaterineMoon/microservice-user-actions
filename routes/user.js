@@ -8,8 +8,8 @@ var api = express.Router();
 api.get('/user', UserController.getAllUsers);
 api.get('/user/:userId', UserController.getUser);
 api.post('/user', UserController.createUser);
-api.delete("/user/:id", UserController.deleteUser);
-api.put("/user/:id", UserController.updateUser);
+api.delete("/user/:userId", UserController.deleteUser);
+api.put("/user/:userId", UserController.updateUser);
 
 
 module.exports = api;

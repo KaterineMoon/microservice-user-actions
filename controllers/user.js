@@ -12,7 +12,7 @@ function createUser(req, res) {
     var params = req.body;
 
     user.idUser = params.idUser;
-    user.profile = params.profileId;
+    user.profile = params.profile;
     user.alarm = [];
     user.favorites = [];
     user.default = [];
@@ -36,7 +36,7 @@ function createUser(req, res) {
 
 function getUser(req, res) {
     
-    var userId =  req.params.idUser;
+    var userId =  req.params.userId;
 
     User.findOne({ _id: userId }, (err, user) => {
 
@@ -58,7 +58,7 @@ function getUser(req, res) {
 
 function updateUser(req, res) {
 
-    var userId = req.params.idUser;
+    var userId = req.params.userId;
     var newInformation = req.body;
 
     User.findByIdAndUpdate(
@@ -83,7 +83,7 @@ function updateUser(req, res) {
 
 function deleteUser(req, res) {
 
-    var userId = req.params.idUser;
+    var userId = req.params.userId;
 
     User.findByIdAndRemove(userId, (error, deletedUser) => {
 
